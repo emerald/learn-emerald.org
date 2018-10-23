@@ -49,6 +49,13 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
+    match "*.rst" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" artcileCtx
+            >>= relativizeUrls
+
+
     match "templates/*" $ compile templateBodyCompiler
 
 
