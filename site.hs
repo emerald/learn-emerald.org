@@ -21,25 +21,25 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    match "docs/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/article.html" artcileCtx
+            >>= loadAndApplyTemplate "templates/default.html" artcileCtx
             >>= relativizeUrls
 
-    create ["blog.html"] $ do
+    create ["docs.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let blogCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Blog"                `mappend`
+            docs <- loadAll "docs/*"
+            let docsCtx =
+                    listField "docs" artcileCtx (return docs) `mappend`
+                    constField "title" "Docs"                         `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/blog.html" blogCtx
-                >>= loadAndApplyTemplate "templates/default.html" blogCtx
+                >>= loadAndApplyTemplate "templates/docs.html" docsCtx
+                >>= loadAndApplyTemplate "templates/default.html" docsCtx
                 >>= relativizeUrls
 
 
@@ -59,7 +59,7 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
+artcileCtx :: Context String
+artcileCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
