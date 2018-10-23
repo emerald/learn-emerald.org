@@ -19,7 +19,7 @@ For a more dynamic experience, you can visit the
 `Emerald group on GitHub <https://github.com/emerald>`_.
 
 The site is generated using `Hakyll <https://jaspervdj.be/hakyll/>`_ —
-a simple static site generator, written in, and configured using
+a simple static site generator; written in, and configured using
 Haskell. Hakyll is designed to keep the control flow site
 generation process explicit, but high level. For instance, see the
 `configuration file for this web site <https://github.com/emerald/learn-emerald.org/blob/master/site.hs>`_.
