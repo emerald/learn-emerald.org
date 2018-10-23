@@ -26,10 +26,9 @@ Haskell. Hakyll is designed to keep the control flow of the site
 generation process explicit, but high level. For instance, see the
 `configuration file for this web site <https://github.com/emerald/learn-emerald.org/blob/master/site.hs>`_.
 
-Hakyll also uses `Pandoc <https://pandoc.org/>`_, a universal document
-converter, for the individual pages. This means that authors can
-contribute articles written in pretty much any markup format they
-like, so long as it is
+For the individual pages, Hakyll uses `Pandoc <https://pandoc.org/>`_
+— a universal document converter. This means that authors can
+contribute articles in pretty much any markup format, so long as it is
 `supported by Pandoc <http://pandoc.org/>`_.
 
 If you would like to make a contribution, fix or point out a type-o,
