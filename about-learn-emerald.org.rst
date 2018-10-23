@@ -7,9 +7,11 @@ About ``learn-emerald.org``
 ===========================
 
 The purpose of ``learn-emerald.org`` is to showcase the Emerald
-programming language effort currently under way (2017-2021), led by
-the
-`Research Group for Programming and Software Engineering (PSE) <https://www.mn.uio.no/ifi/english?vrtx=unit-view&areacode=150531>`_
+programming language effort 2017-2021, led by
+`Oleks Shturmov <http://oleks.info>`_ and
+`Eric Bartley Jul <http://ericjul.dk/>`_, under the
+Research Group for
+`Programming and Software Engineering (PSE) <https://www.mn.uio.no/ifi/english?vrtx=unit-view&areacode=150531>`_,
 at the
 `University of Oslo (UiO) <https://www.uio.no/>`_.
 
