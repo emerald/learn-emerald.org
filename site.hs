@@ -37,14 +37,14 @@ main = hakyll $ do
                 >>= relativizeUrls
 
 
-    match "index.rst" $ do
-        route $ setExtension "html"
+    match "index.html" $ do
+        route idRoute
         compile $ do
             let indexCtx =
                     constField "title" "Home" `mappend`
                     defaultContext
 
-            pandocCompiler
+            getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
