@@ -1,0 +1,34 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+html, body {
+  width: 100%;
+}
+
+nav {
+  text-align: right;
+}
+
+nav a {
+  font-variant: small-caps;
+}
+
+main {
+  width: 100%;
+}
+
+.landing-text {
+  text-align: center;
+}
+
+.landing-text h1 {
+  font-variant: small-caps;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
