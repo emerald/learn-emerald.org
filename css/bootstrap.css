@@ -24,11 +24,11 @@ main {
 }
 
 .landing-text h1 {
-  margin-top: 1rem;
   font-variant: small-caps;
 }
 
 .landing-text object, .landing-text img {
+  margin: 1rem 0;
   width: 10rem;
 }
 
