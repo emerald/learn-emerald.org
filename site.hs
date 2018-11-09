@@ -20,6 +20,7 @@ docsPath path =
 copyGlobs = foldl1 (.||.)
   [ "images/*"
   , "css/*"
+  , "js/*"
   , "*.png"
   , "*.svg"
   , "*.ico"
