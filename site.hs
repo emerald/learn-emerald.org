@@ -2,9 +2,21 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           System.FilePath
+  ( takeDirectory
+  , takeBaseName
+  , (</>)
+  , (<.>)
+  )
 
 
 --------------------------------------------------------------------------------
+
+docsPath :: FilePath -> FilePath
+docsPath path =
+  takeDirectory path </>
+    ((tail . dropWhile (/= '-') . takeBaseName) path) <.> "html"
+
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
@@ -36,7 +48,7 @@ main = hakyll $ do
         compile compressCssCompiler
 
     match "docs/*" $ do
-        route $ setExtension "html"
+        route $ customRoute $ docsPath . toFilePath
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/article.html" artcileCtx
             >>= loadAndApplyTemplate "templates/default.html" artcileCtx
