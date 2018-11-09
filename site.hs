@@ -17,35 +17,21 @@ docsPath path =
   takeDirectory path </>
     ((tail . dropWhile (/= '-') . takeBaseName) path) <.> "html"
 
+copyGlobs = foldl1 (.||.)
+  [ "images/*"
+  , "css/*"
+  , "*.png"
+  , "*.svg"
+  , "*.ico"
+  , "*.xml"
+  , "*.webmanifest"
+  ]
+
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
+    match copyGlobs $ do
         route   idRoute
         compile copyFileCompiler
-
-    match "*.png" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "*.svg" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "*.ico" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "*.xml" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "*.webmanifest" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
 
     match "docs/*" $ do
         route $ customRoute $ docsPath . toFilePath
