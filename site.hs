@@ -8,7 +8,7 @@ import           System.FilePath
   , (</>)
   , (<.>)
   )
-
+import           Text.Pandoc.Options
 
 --------------------------------------------------------------------------------
 
@@ -27,6 +27,17 @@ copyGlobs = foldl1 (.||.)
   , "*.webmanifest"
   ]
 
+customPandocCompiler :: Compiler (Item String)
+customPandocCompiler =
+    let moreReaderExtensions = [Ext_raw_html]
+        readerOptions = defaultHakyllReaderOptions {
+          readerExtensions =
+            readerExtensions defaultHakyllReaderOptions <>
+            extensionsFromList moreReaderExtensions
+        }
+        writerOptions = defaultHakyllWriterOptions
+    in pandocCompilerWith readerOptions writerOptions
+
 main :: IO ()
 main = hakyll $ do
     match copyGlobs $ do
@@ -35,7 +46,7 @@ main = hakyll $ do
 
     match "docs/*" $ do
         route $ customRoute $ docsPath . toFilePath
-        compile $ pandocCompiler
+        compile $ customPandocCompiler
             >>= loadAndApplyTemplate "templates/article.html" artcileCtx
             >>= loadAndApplyTemplate "templates/default.html" artcileCtx
             >>= relativizeUrls
